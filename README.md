@@ -2,6 +2,13 @@
 
 # Projeto: Sistema de Streaming de Música
 
+## Autores
+
+- Gustavo | xx.xxx.xxx-x
+- João Paulo Paggi Zuanon Dias | 22.222.058-4
+- Thales | xx.xxx.xxx-x
+
+
 ## Resumo
 
 Este projeto consiste na criação de um banco de dados relacional para um sistema de streaming de música. O banco de dados foi projetado para gerenciar informações sobre **músicas**, **artistas**, **discos**, **usuários** e **playlists**. O sistema permite que usuários pesquisem músicas, criem playlists, acompanhem artistas e explorem discos. Além disso, a modelagem contempla relacionamentos entre as entidades, como a relação entre artistas e músicas, músicas e playlists, e discos e músicas.
