@@ -6,7 +6,7 @@
 
 - Gustavo | xx.xxx.xxx-x
 - João Paulo Paggi Zuanon Dias | 22.222.058-4
-- Thales | xx.xxx.xxx-x
+- Thales | 22.222.033-7
 
 
 ## Resumo
