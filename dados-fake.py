@@ -5,13 +5,16 @@ from faker import Faker
 fake = Faker('pt_BR')
 
 def connect():
-    conn = psycopg2.connect(
+    try:
+        conn = psycopg2.connect(
         host="SEU-HOST",
         database="SEU-BANCO",
         user="SEU-USUARIO",
         password="SUA-SENHA"
     )
-    return conn
+        return conn
+    except Exception as e:
+        print(f"Erro ao conectar: {e}")
 
 def dados_artista():
     nome = fake.name()
