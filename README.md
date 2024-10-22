@@ -4,7 +4,7 @@
 
 ## Autores
 
-- Gustavo | xx.xxx.xxx-x
+- Gustavo Dias| 22.123.061-8
 - João Paulo Paggi Zuanon Dias | 22.222.058-4
 - Thales | 22.222.033-7
 
