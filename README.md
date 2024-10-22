@@ -64,7 +64,7 @@ GROUP BY a.nome
 HAVING COUNT(am.id_musica) > 5;
 
 ```
-### 3. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 3. Quais são os títulos dos discos lançados após 2020?
 
 ```sql
 SELECT titulo
@@ -73,7 +73,7 @@ WHERE data_lancamento > '2020-12-31';
 
 
 ```
-### 4. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 4. Liste os títulos das músicas e os nomes dos artistas que as interpretam, ordenados pelo título da música.
 
 ```sql
 SELECT m.titulo, a.nome
@@ -84,7 +84,7 @@ ORDER BY m.titulo;
 
 
 ```
-### 5. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 5. Encontre os títulos das playlists que contêm a música com o título 'Imagine'.
 
 ```sql
 SELECT p.titulo
@@ -95,7 +95,7 @@ WHERE m.titulo = 'Imagine';
 
 
 ```
-### 6. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 6. Liste os usuários que criaram playlists que contêm músicas do disco 'Abbey Road'.
 
 ```sql
 SELECT u.nome
@@ -108,7 +108,7 @@ WHERE d.titulo = 'Abbey Road';
 
 
 ```
-### 7. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 7. Qual é a duração média das músicas de um artista específico?
 
 ```sql
 SELECT AVG(m.duracao) AS duracao_media
@@ -117,7 +117,7 @@ JOIN Artista_Musica am ON m.id_musica = am.id_musica
 WHERE am.id_artista = id_artista_especifico;
 
 ```
-### 8. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 8. Encontre todos os artistas que não têm músicas.
 
 ```sql
 SELECT a.nome
@@ -127,7 +127,7 @@ WHERE am.id_musica IS NULL;
 
 
 ```
-### 9. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 9. Liste todos os discos que contêm mais de 10 músicas.
 
 ```sql
 SELECT d.titulo
@@ -138,7 +138,7 @@ HAVING COUNT(dm.id_musica) > 10;
 
 
 ```
-### 10. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 10. Quais são os nomes dos artistas que têm discos lançados antes de 2010 e que têm músicas na playlist 'Top 50'?
 
 ```sql
 SELECT DISTINCT a.nome
@@ -152,7 +152,7 @@ AND p.titulo = 'Top 50';
 
 
 ```
-### 11. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 11. Quais músicas são interpretadas por mais de um artista?
 
 ```sql
 SELECT m.titulo
@@ -163,7 +163,7 @@ HAVING COUNT(am.id_artista) > 1;
 
 
 ```
-### 12. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 12. Liste os títulos das músicas que aparecem em mais de uma playlist.
 
 ```sql
 SELECT m.titulo
@@ -174,7 +174,7 @@ HAVING COUNT(pm.id_playlist) > 1;
 
 
 ```
-### 13. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 13. Encontre os nomes dos usuários que têm playlists que incluem a música 'Bohemian Rhapsody'.
 
 ```sql
 SELECT u.nome
@@ -186,7 +186,7 @@ WHERE m.titulo = 'Bohemian Rhapsody';
 
 
 ```
-### 14. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 14. Qual é o título da música mais longa do disco 'Dark Side of the Moon'?
 
 ```sql
 SELECT m.titulo
@@ -199,7 +199,7 @@ LIMIT 1;
 
 
 ```
-### 15. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 15. Liste todos os discos lançados por um artista específico em um determinado ano.
 
 ```sql
 SELECT titulo
@@ -208,7 +208,7 @@ WHERE id_artista = id_artista_especifico
 AND EXTRACT(YEAR FROM data_lancamento) = ano_especifico;
 
 ```
-### 16. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 16. Quais são os nomes dos artistas que têm músicas em playlists criadas por um usuário específico?
 
 ```sql
 SELECT DISTINCT a.nome
@@ -221,7 +221,7 @@ WHERE p.id_usuario = id_usuario_especifico;
 
 
 ```
-### 17. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 17. Encontre a lista de músicas que não estão em nenhuma playlist.
 
 ```sql
 SELECT m.titulo
@@ -231,7 +231,7 @@ WHERE pm.id_playlist IS NULL;
 
 
 ```
-### 18. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 18. Liste os títulos das músicas e os nomes dos artistas que têm mais de 3 músicas em uma mesma playlist.
 
 ```sql
 SELECT m.titulo, a.nome
@@ -244,7 +244,7 @@ HAVING COUNT(m.id_musica) > 3;
 
 
 ```
-### 19. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 19. Quais são os discos que contêm músicas de artistas que têm pelo menos 2 discos lançados?
 
 ```sql
 SELECT d.titulo
@@ -255,7 +255,7 @@ WHERE (SELECT COUNT(*) FROM Disco WHERE id_artista = a.id_artista) >= 2;
 
 
 ```
-### 20. Encontre o nome de todos os artistas que têm mais de 5 músicas em seu repertório.
+### 20. Liste todos os usuários e suas playlists, mas apenas para playlists que contêm pelo menos 5 músicas?
 
 ```sql
 SELECT u.nome AS usuario, p.titulo AS playlist
