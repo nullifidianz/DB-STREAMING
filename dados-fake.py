@@ -81,6 +81,49 @@ def artista_musica(id_artista, id_musica):
 def playlist_musica(id_playlist, id_musica):
     supabase.table('playlist_musica').insert({"id_playlist": id_playlist, "id_musica": id_musica}).execute()
 
+def insere_dados_musicas():
+    artistas = [
+        {"nome": "Queen", "data_nascimento": "1970-01-01"},
+        {"nome": "Pink Floyd", "data_nascimento": "1965-01-01"},
+        {"nome": "The Beatles", "data_nascimento": "1960-01-01"},
+        {"nome": "John Lennon", "data_nascimento": "1940-10-09"},
+    ]
+
+    discos = [
+        {"titulo": "A Night at the Opera", "data_lancamento": "1975-11-21", "artista": "Queen"},
+        {"titulo": "The Dark Side of the Moon", "data_lancamento": "1973-03-01", "artista": "Pink Floyd"},
+        {"titulo": "Abbey Road", "data_lancamento": "1969-09-26", "artista": "The Beatles"},
+        {"titulo": "Imagine", "data_lancamento": "1971-09-09", "artista": "John Lennon"},
+    ]
+
+    musicas = [
+        {"titulo": "Bohemian Rhapsody", "duracao": 354, "disco": "A Night at the Opera", "artista": "Queen"},
+        {"titulo": "Dark Side of the Moon", "duracao": 423, "disco": "The Dark Side of the Moon", "artista": "Pink Floyd"},
+        {"titulo": "Abbey Road", "duracao": 260, "disco": "Abbey Road", "artista": "The Beatles"},
+        {"titulo": "Imagine", "duracao": 183, "disco": "Imagine", "artista": "John Lennon"},
+    ]
+
+    artista_ids = {}
+    for artista in artistas:
+        id_artista = insere_artista(artista['nome'], datetime.strptime(artista['data_nascimento'], '%Y-%m-%d').date())
+        artista_ids[artista['nome']] = id_artista
+
+    disco_ids = {}
+    for disco in discos:
+        id_artista = artista_ids[disco['artista']]
+        id_disco = insere_disco(disco['titulo'], disco['data_lancamento'], id_artista)
+        disco_ids[disco['titulo']] = id_disco
+
+    for musica in musicas:
+        id_musica = insere_musica(musica['titulo'], musica['duracao'])
+        id_disco = disco_ids[musica['disco']]
+        id_artista = artista_ids[musica['artista']]
+        
+        junta_musica_no_disco(id_musica, id_disco)
+        artista_musica(id_artista, id_musica)
+
+    print("Músicas e dados inseridos com sucesso.")
+
 def main():
     try:
         for _ in range(10):
@@ -106,9 +149,11 @@ def main():
                 id_musica = insere_musica(titulo_musica, duracao)
                 playlist_musica(id_playlist, id_musica)
 
+        insere_dados_musicas()
         print("Dados inseridos com sucesso")
     except Exception as e:
         print(f"Erro ao inserir dados: {e}")
 
 if __name__ == "__main__":
     main()
+
